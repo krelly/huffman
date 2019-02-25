@@ -5,7 +5,7 @@ class HuffmanEncoder
   end
 
   def encode(text)
-    text.chars.map { |c| @tree.char_code[c] }.join
+    text.chars.map { |c| @tree.char_code.fetch(c) }.join
   end
 
   def decode(compressed)

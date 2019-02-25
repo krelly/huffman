@@ -7,8 +7,8 @@ class HuffmanTree
   attr_reader :char_code
   attr_reader :head
 
-  def self.reconstruct_tree(io)
-    new decode_tree(io)
+  def self.reconstruct_tree(str)
+    new decode_tree(StringIO.new(str))
   end
 
   def self.build_tree(text)
@@ -53,7 +53,7 @@ class HuffmanTree
       encode_tree(io, node.left)
       encode_tree(io, node.right)
     end
-    io.tap(&:rewind) if node == @head
+    io.string if node == @head
   end
 
   def node_at(path, node = @head)
