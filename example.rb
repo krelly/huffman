@@ -33,7 +33,7 @@ decoded = enc2.decode(compressed)
 original_size = text.bytesize
 compressed_string_size = [compressed].pack('B*').bytesize
 
-dictionary_size = [encoded_tree.tap(&:rewind).read].pack('B*').bytesize
+dictionary_size = [encoded_tree].pack('B*').bytesize
 total_encoded_size = (compressed_string_size + dictionary_size).abs
 saved_bytes = original_size - total_encoded_size
 saved_in_percents = 100 - (total_encoded_size * 100.0 / original_size)
